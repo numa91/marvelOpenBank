@@ -8,6 +8,7 @@ import com.numa91.marvelob.domain.model.CharacterModel
 import com.numa91.marvelob.domain.usecase.GetCharacterDetailsUseCase
 import com.numa91.marvelob.domain.usecase.GetCharactersUseCase
 import com.numa91.marvelob.domain.usecase.base.UseCaseResponse
+import kotlinx.coroutines.cancel
 
 class CharacterDetailViewModel constructor(private val getCharacterDetailsUseCase: GetCharacterDetailsUseCase) : ViewModel() {
 
@@ -26,8 +27,13 @@ class CharacterDetailViewModel constructor(private val getCharacterDetailsUseCas
 
             override fun onError(apiError: String?) {
                 errorMsg.value = if(apiError.isNullOrEmpty()) "ERROR" else apiError
+                showProgressbar.value = false
             }
         })
     }
 
+    override fun onCleared() {
+        viewModelScope.cancel()
+        super.onCleared()
+    }
 }
