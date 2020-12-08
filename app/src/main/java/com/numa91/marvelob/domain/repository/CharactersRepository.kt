@@ -6,6 +6,6 @@ import com.numa91.marvelob.domain.model.CharacterModel
 
 interface CharactersRepository {
     suspend fun getCharacter (id: Long) : BaseModel
-    suspend fun getCharacters (offset: Int, limit: Int) : BaseModel
+    suspend fun getCharacters () : BaseModel
 
 }

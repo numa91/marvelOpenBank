@@ -6,7 +6,7 @@ import java.util.concurrent.CancellationException
 
 abstract class UseCase<Type, in Params>() where Type : Any {
 
-    abstract suspend fun run(params: Params): Type
+    abstract suspend fun run(params: Params?): Type
 
 
     operator fun invoke(scope: CoroutineScope, params: Params, onResult: UseCaseResponse<Type>?) {

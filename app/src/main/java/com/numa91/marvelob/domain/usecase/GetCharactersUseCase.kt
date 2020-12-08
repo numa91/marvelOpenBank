@@ -6,12 +6,9 @@ import com.numa91.marvelob.domain.usecase.base.UseCase
 
 class GetCharactersUseCase constructor(
     private val charactersRepository: CharactersRepository
-) : UseCase<BaseModel, GetCharactersUseCase.Params>() {
-
-    override suspend fun run(params: Params): BaseModel {
-        return charactersRepository.getCharacters(params.offset, params.limit)
+) : UseCase<BaseModel, Any?>() {
+    override suspend fun run(params: Any?): BaseModel {
+        return charactersRepository.getCharacters()
     }
-
-    data class Params(val offset: Int, val limit: Int)
 
 }

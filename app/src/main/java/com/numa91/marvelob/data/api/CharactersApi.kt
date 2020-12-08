@@ -19,8 +19,6 @@ interface CharactersApi {
     suspend fun getCharacters(
         @Query("apikey") apiKey: String,
         @Query("hash") hash: String,
-        @Query("ts") timestamp: String,
-        @Query("offset") offset: Int,
-        @Query("limit") limit: Int
+        @Query("ts") timestamp: String
     ): BaseEntity
 }

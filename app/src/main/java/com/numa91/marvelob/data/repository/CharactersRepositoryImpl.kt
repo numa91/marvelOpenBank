@@ -27,14 +27,12 @@ class CharactersRepositoryImpl(
         ).map()
     }
 
-    override suspend fun getCharacters(offset: Int, limit: Int): BaseModel {
+    override suspend fun getCharacters(): BaseModel {
         val timestamp = System.currentTimeMillis().toString()
         return api.getCharacters(
             apiKey = API_PUBLIC_KEY,
             hash = apiHash(timestamp),
-            timestamp = timestamp,
-            offset = offset,
-            limit = limit
+            timestamp = timestamp
         ).map()
     }
 

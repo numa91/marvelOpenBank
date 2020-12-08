@@ -16,8 +16,7 @@ class CharacterListViewModel constructor(private val getCharactersUseCase: GetCh
 
     fun getCharacters(){
         showProgressbar.value = true
-        val params = GetCharactersUseCase.Params(10,10)
-        getCharactersUseCase.invoke(viewModelScope,params, object :UseCaseResponse<BaseModel>{
+        getCharactersUseCase.invoke(viewModelScope,null, object :UseCaseResponse<BaseModel>{
             override fun onSuccess(result: BaseModel) {
                 charactersData.value = result
                 showProgressbar.value = false
