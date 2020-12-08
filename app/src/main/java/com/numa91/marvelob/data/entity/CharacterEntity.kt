@@ -2,7 +2,9 @@ package com.numa91.marvelob.data.entity
 
 import com.numa91.marvelob.data.mapper.Mapper
 import com.numa91.marvelob.domain.model.CharacterModel
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class CharacterEntity(
     val id: Long,
     val name: String,

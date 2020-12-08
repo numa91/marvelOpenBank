@@ -4,7 +4,8 @@ import com.numa91.marvelob.BuildConfig
 import com.numa91.marvelob.data.api.CharactersApi
 import com.numa91.marvelob.data.repository.CharactersRepositoryImpl
 import com.numa91.marvelob.domain.repository.CharactersRepository
-import com.numa91.marvelob.domain.usecase.GetCharactersUseCaseImpl
+import com.numa91.marvelob.domain.usecase.GetCharacterDetailsUseCase
+import com.numa91.marvelob.domain.usecase.GetCharactersUseCase
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -44,13 +45,17 @@ fun createRetrofit(okHttpClient: OkHttpClient, url: String): Retrofit {
     return Retrofit.Builder()
         .baseUrl(url)
         .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create()).build()
+        .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build())).build()
 }
 
 fun createCharactersRepository(charactersApi: CharactersApi): CharactersRepository {
     return CharactersRepositoryImpl(charactersApi)
 }
 
-fun createGetCharactersUseCase(charactersRepository: CharactersRepository): GetCharactersUseCaseImpl{
-    return GetCharactersUseCaseImpl(charactersRepository)
+fun createGetCharactersUseCase(charactersRepository: CharactersRepository): GetCharactersUseCase{
+    return GetCharactersUseCase(charactersRepository)
+}
+
+fun createGetCharacterDetailsUseCase(charactersRepository: CharactersRepository): GetCharacterDetailsUseCase{
+    return GetCharacterDetailsUseCase(charactersRepository)
 }

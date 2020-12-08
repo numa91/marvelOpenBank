@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">marvelOB</string>
+    <string name="no_internet_connection">Sin conexión a internet</string>
+    <string name="no_description">Sin datos</string>
 </resources>

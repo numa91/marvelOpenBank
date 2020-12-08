@@ -4,14 +4,14 @@ import com.numa91.marvelob.domain.model.BaseModel
 import com.numa91.marvelob.domain.repository.CharactersRepository
 import com.numa91.marvelob.domain.usecase.base.UseCase
 
-class GetCharactersUseCaseImpl constructor(
+class GetCharacterDetailsUseCase constructor(
     private val charactersRepository: CharactersRepository
-) : UseCase<BaseModel, GetCharactersUseCaseImpl.Params>() {
+) : UseCase<BaseModel, GetCharacterDetailsUseCase.Params>() {
 
     override suspend fun run(params: Params): BaseModel {
-        return charactersRepository.getCharacters(params.offset, params.limit)
+        return charactersRepository.getCharacter(id = params.id)
     }
 
-    data class Params(val offset: Int, val limit: Int)
+    data class Params(val id: Long)
 
 }
